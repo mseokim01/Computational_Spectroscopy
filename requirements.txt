@@ -1,0 +1,4 @@
+rdkit
+matplotlib
+numpy
+pyvista

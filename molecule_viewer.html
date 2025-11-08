@@ -1,0 +1,52 @@
+<html>
+<body style="margin: 0; padding: 0; display: block;">
+<div id="3dmolviewer_17626013201933815"  style="position: relative; width: 1200px; height: 800px;">
+        <p id="3dmolwarning_17626013201933815" style="background-color:#ffcccc;color:black">3Dmol.js failed to load for some reason.  Please check your browser console for error messages.<br></p>
+        </div>
+<script>
+
+var loadScriptAsync = function(uri){
+  return new Promise((resolve, reject) => {
+    //this is to ignore the existence of requirejs amd
+    var savedexports, savedmodule;
+    if (typeof exports !== 'undefined') savedexports = exports;
+    else exports = {}
+    if (typeof module !== 'undefined') savedmodule = module;
+    else module = {}
+
+    var tag = document.createElement('script');
+    tag.src = uri;
+    tag.async = true;
+    tag.onload = () => {
+        exports = savedexports;
+        module = savedmodule;
+        resolve();
+    };
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+});
+};
+
+if(typeof $3Dmolpromise === 'undefined') {
+$3Dmolpromise = null;
+  $3Dmolpromise = loadScriptAsync('https://cdn.jsdelivr.net/npm/3dmol@2.5.3/build/3Dmol-min.js');
+}
+
+var viewer_17626013201933815 = null;
+var warn = document.getElementById("3dmolwarning_17626013201933815");
+if(warn) {
+    warn.parentNode.removeChild(warn);
+}
+$3Dmolpromise.then(function() {
+viewer_17626013201933815 = $3Dmol.createViewer(document.getElementById("3dmolviewer_17626013201933815"),{backgroundColor:"white"});
+viewer_17626013201933815.zoomTo();
+	viewer_17626013201933815.addModel("HETATM    1  C1  UNL     1       1.619   1.499  -3.447  1.00  0.00           C  \nHETATM    2  O1  UNL     1       1.477   1.838  -2.074  1.00  0.00           O  \nHETATM    3  C2  UNL     1       1.028   0.853  -1.238  1.00  0.00           C  \nHETATM    4  C3  UNL     1       0.689  -0.448  -1.608  1.00  0.00           C  \nHETATM    5  C4  UNL     1       0.240  -1.358  -0.643  1.00  0.00           C  \nHETATM    6  C5  UNL     1       0.117  -0.977   0.696  1.00  0.00           C  \nHETATM    7  S1  UNL     1      -0.446  -2.178   1.889  1.00  0.00           S  \nHETATM    8  C6  UNL     1      -1.830  -1.268   2.626  1.00  0.00           C  \nHETATM    9  C7  UNL     1       0.472   0.321   1.067  1.00  0.00           C  \nHETATM   10  C8  UNL     1       0.919   1.230   0.103  1.00  0.00           C  \nHETATM   11  H1  UNL     1       2.357   0.701  -3.583  1.00  0.00           H  \nHETATM   12  H2  UNL     1       0.655   1.226  -3.888  1.00  0.00           H  \nHETATM   13  H3  UNL     1       1.987   2.385  -3.974  1.00  0.00           H  \nHETATM   14  H4  UNL     1       0.762  -0.790  -2.634  1.00  0.00           H  \nHETATM   15  H5  UNL     1      -0.015  -2.370  -0.950  1.00  0.00           H  \nHETATM   16  H6  UNL     1      -1.473  -0.407   3.195  1.00  0.00           H  \nHETATM   17  H7  UNL     1      -2.368  -1.932   3.309  1.00  0.00           H  \nHETATM   18  H8  UNL     1      -2.525  -0.932   1.851  1.00  0.00           H  \nHETATM   19  H9  UNL     1       0.419   0.640   2.104  1.00  0.00           H  \nHETATM   20  H10 UNL     1       1.193   2.239   0.401  1.00  0.00           H  \nCONECT    1    2   11   12   13\nCONECT    2    3\nCONECT    3    4    4   10\nCONECT    4    5   14\nCONECT    5    6    6   15\nCONECT    6    7    9\nCONECT    7    8\nCONECT    8   16   17   18\nCONECT    9   10   10   19\nCONECT   10   20\nEND\n","pdb");
+	viewer_17626013201933815.setStyle({"stick": {"radius": 0.1, "color": "lightgray"}, "sphere": {"radius": 0.3}});
+	viewer_17626013201933815.setColorByProperty("atom","partialCharge",{"prop": "_GasteigerCharge"},{"gradient": "RdBu_r", "min": -0.4967671814547635, "max": 0.4967671814547635});
+	viewer_17626013201933815.addResLabels("atom",{"font": "Arial", "fontSize": 12, "color": "black", "backgroundColor": "white", "backgroundOpacity": 0.5});
+	viewer_17626013201933815.zoomTo();
+viewer_17626013201933815.render();
+});
+</script>
+</body>
+</html>
